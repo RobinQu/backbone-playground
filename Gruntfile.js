@@ -27,6 +27,12 @@ module.exports = function (grunt) {
       }
     },
     
+    open: {
+      server: {
+        path: "http://localhost:<%= connect.options.port %>"
+      }
+    },
+
     connect: {
       options: {
         port: 9000,
@@ -55,7 +61,7 @@ module.exports = function (grunt) {
     }
   });
   
-  grunt.registerTask("default", ["jshint", "connect", "watch"]);
+  grunt.registerTask("default", ["jshint", "connect:liveload", "open", "watch"]);
   
   
 };
