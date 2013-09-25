@@ -1,6 +1,6 @@
 # Learning Backbones
 
-Yet another todo mvc sample with other friends
+Yet another todo mvc sample with other friends:
 
 * requirejs
 * bower

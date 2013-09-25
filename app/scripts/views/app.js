@@ -60,7 +60,7 @@ define(["require", "jquery", "underscore", "backbone", "views/todo"], function(r
 
         this.$("#filters li a")
           .removeClass("selected")
-          .filter("[href='#/' + (app.TodoFilter || '') + '']")
+          .filter("[href='#/" + (app.TodoFilter || '') + "']")
           .addClass("selected");
       } else {
         this.$main.hide();
