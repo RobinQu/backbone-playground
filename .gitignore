@@ -1,0 +1,4 @@
+bower_components
+tmp
+*.log
+.DS_Store
