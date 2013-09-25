@@ -1,4 +1,5 @@
 "use strict";
+var path = require("path");
 var LIVERELOAD_PORT = 35729;
 var lrSnippet = require("connect-livereload")({port: LIVERELOAD_PORT});
 var mountFolder = function (connect, dir) {
@@ -15,6 +16,14 @@ module.exports = function (grunt) {
   
   grunt.initConfig({
     watch: {
+      scripts: {
+        files: ["app/scripts/**/*.js"],
+        tasks: ["jshint"]
+      },
+      handlebars: {
+        files: ["app/handlebars/**/*.hbs"],
+        tasks: ["handlebars"]
+      },
       livereload: {
         options: {
           livereload: LIVERELOAD_PORT
@@ -51,17 +60,45 @@ module.exports = function (grunt) {
     },
     
     jshint: {
-      options: {
-        jshintrc: ".jshintrc"
-      },
-      all: [
+      files: [
         "Gruntfile.js",
         "app/scripts/**/*.js"
-      ]
+      ],
+      options: {
+        jshintrc: ".jshintrc",
+        ignores: ["app/scripts/templates/**/*.js"]
+      }
+    },
+    
+    clean: {
+      tpls: {
+        files: [{
+          dot: true,
+          src: [
+            "app/scripts/templates/**/*.js"
+          ]
+        }]
+      },
+    },
+    
+    handlebars: {
+      compile: {
+        options: {
+          amd: true,
+          namespace: "app.tpls",
+          processName: function (fp) {
+            return path.resolve(fp).replace(path.join(__dirname, "app/handlebars/"), "").toLowerCase().replace(/\.hbs$/, "");
+          }
+        },
+        files: {
+          "app/scripts/templates/todo.js": "app/handlebars/{,*/}/*.hbs"
+        }
+      }
     }
+    
   });
   
-  grunt.registerTask("default", ["jshint", "connect:liveload", "open", "watch"]);
+  grunt.registerTask("default", ["clean", "jshint", "handlebars", "connect:liveload", "open", "watch"]);
   
   
 };

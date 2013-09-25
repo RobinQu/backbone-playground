@@ -3,16 +3,20 @@ require.config({
     jquery: "/bower_components/jquery/jquery",
     underscore: "/bower_components/underscore/underscore-min",
     backbone: "/bower_components/backbone/backbone-min",
-    localstorage: "/bower_components/backbone.localStorage/backbone.localStorage-min"
+    localstorage: "/bower_components/backbone.localStorage/backbone.localStorage-min",
+    handlebars: "/bower_components/handlebars.js/dist/handlebars"
   },
   
   shim: {
     backbone: {
-      deps: ["jquery","underscore"],
+      deps: ["jquery","underscore","handlebars", "utils/handlebars_helpers"],
       exports: "Backbone"
     },
-    "underscore": {
+    underscore: {
       exports: "_"
+    },
+    handlebars: {
+      exports: "Handlebars"
     }
   }
 });

@@ -1,4 +1,4 @@
-define(["require", "jquery", "underscore", "backbone", "views/todo"], function(require, $, _, Backbone, TodoView) {
+define(["require", "jquery", "underscore", "backbone", "views/todo", "templates/todo"], function(require, $, _, Backbone, TodoView, TodoTemplates) {
   
   var ENTER_KEY = 13;
   
@@ -9,7 +9,8 @@ define(["require", "jquery", "underscore", "backbone", "views/todo"], function(r
     el: "#todoapp",
 
     // Our template for the line of statistics at the bottom of the app.
-    statsTemplate: _.template($("#stats-template").html()),
+    // statsTemplate: _.template($("#stats-template").html()),
+    statsTemplate: TodoTemplates.stats,
 
     // New
     // Delegated events for creating new items, and clearing completed ones.
@@ -60,7 +61,7 @@ define(["require", "jquery", "underscore", "backbone", "views/todo"], function(r
 
         this.$("#filters li a")
           .removeClass("selected")
-          .filter("[href='#/" + (app.TodoFilter || '') + "']")
+          .filter("[href='#/" + (app.TodoFilter || "") + "']")
           .addClass("selected");
       } else {
         this.$main.hide();
@@ -96,7 +97,6 @@ define(["require", "jquery", "underscore", "backbone", "views/todo"], function(r
       var app = require("app");
       app.Todos.each(this.filterOne, this);
     },
-
 
     // New
     // Generate the attributes for a new Todo item.
