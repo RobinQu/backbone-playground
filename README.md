@@ -3,6 +3,7 @@
 Yet another todo mvc sample with other friends:
 
 * requirejs
+* handlebars
 * bower
 * grunt
 
@@ -14,6 +15,10 @@ npm install .
 bower install .
 grunt
 ```
+
+## Automation
+
+`grunt` is required because handlebars templates replies on it to pre-compile. Of course, we do a lot of other stuff in grunt.
 
 ## References
 
