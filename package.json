@@ -1,7 +1,7 @@
 {
   "name": "todo",
   "version": "0.1.0",
-  "description": "**Yet another todo mvc sample with other friends**",
+  "description": "Yet another todo mvc sample with other friends",
   "repository": {
     "type": "git",
     "url": "git://github.com/RobinQu/backbone-todomvc.git"
