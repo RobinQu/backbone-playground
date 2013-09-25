@@ -2,7 +2,7 @@ define(["require", "backbone"], function (require, Backbone) {
   
   return Backbone.Router.extend({
     routes:{
-      '*filter': 'setFilter'
+      "*filter": "setFilter"
     },
 
     setFilter: function( param ) {
@@ -12,11 +12,11 @@ define(["require", "backbone"], function (require, Backbone) {
       if (param) {
         param = param.trim();
       }
-      app.TodoFilter = param || '';
+      app.TodoFilter = param || "";
 
       // Trigger a collection filter event, causing hiding/unhiding
       // of Todo view items
-      app.Todos.trigger('filter');
+      app.Todos.trigger("filter");
     }
   });
   

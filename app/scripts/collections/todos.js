@@ -9,7 +9,7 @@ define(["backbone", "models/todo", "localstorage"], function (Backbone, Todo) {
     // Filter down the list of all todo items that are finished.
     completed: function() {
       return this.filter(function( todo ) {
-        return todo.get('completed');
+        return todo.get("completed");
       });
     },
 
@@ -24,12 +24,12 @@ define(["backbone", "models/todo", "localstorage"], function (Backbone, Todo) {
       if ( !this.length ) {
         return 1;
       }
-      return this.last().get('order') + 1;
+      return this.last().get("order") + 1;
     },
 
     // Todos are sorted by their original insertion order.
     comparator: function( todo ) {
-      return todo.get('order');
+      return todo.get("order");
     }
     
   });

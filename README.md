@@ -6,6 +6,12 @@
 * bower
 
 
+## Setup
+
+```
+bower install .
+```
+
 ## References
 
 * http://backbonetutorials.com/organizing-backbone-using-modules/

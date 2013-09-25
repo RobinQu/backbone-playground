@@ -5,17 +5,17 @@ define(["require", "jquery", "underscore", "backbone", "views/todo"], function(r
 
     // Instead of generating a new element, bind to the existing skeleton of
     // the App already present in the HTML.
-    el: '#todoapp',
+    el: "#todoapp",
 
     // Our template for the line of statistics at the bottom of the app.
-    statsTemplate: _.template($('#stats-template').html()),
+    statsTemplate: _.template($("#stats-template").html()),
 
     // New
     // Delegated events for creating new items, and clearing completed ones.
     events: {
-      'keypress #new-todo': 'createOnEnter',
-      'click #clear-completed': 'clearCompleted',
-      'click #toggle-all': 'toggleAllComplete'
+      "keypress #new-todo": "createOnEnter",
+      "click #clear-completed": "clearCompleted",
+      "click #toggle-all": "toggleAllComplete"
     },
 
     // At initialization we bind to the relevant events on the `Todos`
@@ -24,25 +24,25 @@ define(["require", "jquery", "underscore", "backbone", "views/todo"], function(r
     initialize: function() {
       var app = require("app");
       
-      this.allCheckbox = this.$('#toggle-all')[0];
-      this.$input = this.$('#new-todo');
-      this.$footer = this.$('#footer');
-      this.$main = this.$('#main');
+      this.allCheckbox = this.$("#toggle-all")[0];
+      this.$input = this.$("#new-todo");
+      this.$footer = this.$("#footer");
+      this.$main = this.$("#main");
 
-      this.listenTo(app.Todos, 'add', this.addOne);
-      this.listenTo(app.Todos, 'reset', this.addAll);
+      this.listenTo(app.Todos, "add", this.addOne);
+      this.listenTo(app.Todos, "reset", this.addAll);
 
       // New
-      this.listenTo(app.Todos, 'change:completed', this.filterOne);
-      this.listenTo(app.Todos, 'filter', this.filterAll);
-      this.listenTo(app.Todos, 'all', this.render);
+      this.listenTo(app.Todos, "change:completed", this.filterOne);
+      this.listenTo(app.Todos, "filter", this.filterAll);
+      this.listenTo(app.Todos, "all", this.render);
 
       app.Todos.fetch();
     },
 
     // New
     // Re-rendering the App just means refreshing the statistics -- the rest
-    // of the app doesn't change.
+    // of the app doesn"t change.
     render: function() {
       var app = require("app");
       var completed = app.Todos.completed().length;
@@ -57,10 +57,10 @@ define(["require", "jquery", "underscore", "backbone", "views/todo"], function(r
           remaining: remaining
         }));
 
-        this.$('#filters li a')
-          .removeClass('selected')
-          .filter('[href="#/' + (app.TodoFilter || '') + '"]')
-          .addClass('selected');
+        this.$("#filters li a")
+          .removeClass("selected")
+          .filter("[href='#/' + (app.TodoFilter || '') + '']")
+          .addClass("selected");
       } else {
         this.$main.hide();
         this.$footer.hide();
@@ -75,19 +75,19 @@ define(["require", "jquery", "underscore", "backbone", "views/todo"], function(r
       var view = new TodoView({
         model: todo
       });
-      $('#todo-list').append(view.render().el);
+      $("#todo-list").append(view.render().el);
     },
 
     // Add all items in the **Todos** collection at once.
     addAll: function() {
       var app = require("app");
-      this.$('#todo-list').html('');
+      this.$("#todo-list").html("");
       app.Todos.each(this.addOne, this);
     },
 
     // New
     filterOne: function(todo) {
-      todo.trigger('visible');
+      todo.trigger("visible");
     },
 
     // New
@@ -117,14 +117,14 @@ define(["require", "jquery", "underscore", "backbone", "views/todo"], function(r
       }
       var app = require("app");
       app.Todos.create(this.newAttributes());
-      this.$input.val('');
+      this.$input.val("");
     },
 
     // New
     // Clear all completed todo items, destroying their models.
     clearCompleted: function() {
       var app = require("app");
-      _.invoke(app.Todos.completed(), 'destroy');
+      _.invoke(app.Todos.completed(), "destroy");
       return false;
     },
 
@@ -135,7 +135,7 @@ define(["require", "jquery", "underscore", "backbone", "views/todo"], function(r
 
       app.Todos.each(function(todo) {
         todo.save({
-          'completed': completed
+          "completed": completed
         });
       });
     }

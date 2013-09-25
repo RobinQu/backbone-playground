@@ -1,56 +1,55 @@
-define(["jquery", "underscore", "backbone", "models/todo"], function ($, _, Backbone, Todo) {
+define(["jquery", "underscore", "backbone"], function ($, _, Backbone) {
   
   var ENTER_KEY = 13;
   
   return Backbone.View.extend({
 
     //... is a list tag.
-    tagName: 'li',
+    tagName: "li",
 
     // Cache the template function for a single item.
-    template: _.template( $('#item-template').html() ),
+    template: _.template( $("#item-template").html() ),
 
     // The DOM events specific to an item.
     events: {
-      'click .toggle': 'togglecompleted', // NEW
-      'dblclick label': 'edit',
-      'click .destroy': 'clear',           // NEW
-      'keypress .edit': 'updateOnEnter',
-      'blur .edit': 'close'
+      "click .toggle": "togglecompleted", // NEW
+      "dblclick label": "edit",
+      "click .destroy": "clear",           // NEW
+      "keypress .edit": "updateOnEnter",
+      "blur .edit": "close"
     },
 
-    // The TodoView listens for changes to its model, re-rendering. Since there's
+    // The TodoView listens for changes to its model, re-rendering. Since there"s
     // a one-to-one correspondence between a **Todo** and a **TodoView** in this
     // app, we set a direct reference on the model for convenience.
     initialize: function() {
-      this.listenTo(this.model, 'change', this.render);
-      this.listenTo(this.model, 'destroy', this.remove);        // NEW
-      this.listenTo(this.model, 'visible', this.toggleVisible); // NEW
+      this.listenTo(this.model, "change", this.render);
+      this.listenTo(this.model, "destroy", this.remove);        // NEW
+      this.listenTo(this.model, "visible", this.toggleVisible); // NEW
     },
 
     // Re-render the titles of the todo item.
     render: function() {
       this.$el.html( this.template( this.model.toJSON() ) );
 
-      this.$el.toggleClass( 'completed', this.model.get('completed') ); // NEW
+      this.$el.toggleClass( "completed", this.model.get("completed") ); // NEW
       this.toggleVisible();                                             // NEW
 
-      this.$input = this.$('.edit');
+      this.$input = this.$(".edit");
       return this;
     },
 
     // NEW - Toggles visibility of item
     toggleVisible : function () {
-      this.$el.toggleClass( 'hidden',  this.isHidden());
+      this.$el.toggleClass( "hidden",  this.isHidden());
     },
 
     // NEW - Determines if item should be hidden
     isHidden : function () {
-      var isCompleted = this.model.get('completed');
+      var isCompleted = this.model.get("completed");
       var app = require("app");
       return ( // hidden cases only
-        (!isCompleted && app.TodoFilter === 'completed')
-        || (isCompleted && app.TodoFilter === 'active')
+        (!isCompleted && app.TodoFilter === "completed") || (isCompleted && app.TodoFilter === "active")
       );
     },
 
@@ -61,7 +60,7 @@ define(["jquery", "underscore", "backbone", "models/todo"], function ($, _, Back
 
     // Switch this view into `"editing"` mode, displaying the input field.
     edit: function() {
-      this.$el.addClass('editing');
+      this.$el.addClass("editing");
       this.$input.focus();
     },
 
@@ -75,10 +74,10 @@ define(["jquery", "underscore", "backbone", "models/todo"], function ($, _, Back
         this.clear(); // NEW
       }
 
-      this.$el.removeClass('editing');
+      this.$el.removeClass("editing");
     },
 
-    // If you hit `enter`, we're through editing the item.
+    // If you hit `enter`, we"re through editing the item.
     updateOnEnter: function( e ) {
       if ( e.which === ENTER_KEY ) {
         this.close();
