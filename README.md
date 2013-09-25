@@ -4,12 +4,15 @@
 
 * requirejs
 * bower
+* grunt
 
 
-## Setup
+## Setup and Run
 
 ```
+npm install .
 bower install .
+grunt
 ```
 
 ## References
