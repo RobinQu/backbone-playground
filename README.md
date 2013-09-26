@@ -1,12 +1,17 @@
-# Learning Backbones
+# Backbones Playground
 
-Yet another todo mvc sample with other friends:
+Yet another backbone mvc sample with other friends:
 
 * requirejs
 * handlebars
 * bower
 * grunt
 
+
+## Samples
+
+* TODO MVC
+* Book Library
 
 ## Setup and Run
 
