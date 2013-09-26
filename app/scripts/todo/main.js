@@ -4,7 +4,8 @@ require.config({
     underscore: "/bower_components/underscore/underscore-min",
     backbone: "/bower_components/backbone/backbone-min",
     localstorage: "/bower_components/backbone.localStorage/backbone.localStorage-min",
-    handlebars: "/bower_components/handlebars.js/dist/handlebars"
+    handlebars: "/bower_components/handlebars.js/dist/handlebars",
+    templates: "/scripts/todo/templates/todo"
   },
   
   shim: {

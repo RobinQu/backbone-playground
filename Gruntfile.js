@@ -66,7 +66,7 @@ module.exports = function (grunt) {
       ],
       options: {
         jshintrc: ".jshintrc",
-        ignores: ["app/scripts/templates/**/*.js"]
+        ignores: ["app/scripts/**/templates/**/*.js"]
       }
     },
     
@@ -85,13 +85,17 @@ module.exports = function (grunt) {
       compile: {
         options: {
           amd: true,
-          namespace: "app.tpls",
+          namespace: "tpls",
           processName: function (fp) {
-            return path.resolve(fp).replace(path.join(__dirname, "app/handlebars/"), "").toLowerCase().replace(/\.hbs$/, "");
+            var _t = path.resolve(fp).replace(path.join(__dirname, "app/handlebars/"), ""),
+                _a = _t.split(path.sep);
+            _a.shift();
+            _t = _a.join(path.sep);
+            return _t.toLowerCase().replace(/\.hbs$/, "");
           }
         },
         files: {
-          "app/scripts/templates/todo.js": "app/handlebars/{,*/}/*.hbs"
+          "app/scripts/todo/templates/todo.js": "app/handlebars/todo/{,*/}/*.hbs"
         }
       }
     }

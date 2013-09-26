@@ -1,4 +1,4 @@
-define(["jquery", "underscore", "backbone", "templates/todo"], function ($, _, Backbone, TodoTemplates) {
+define(["jquery", "underscore", "backbone", "templates"], function ($, _, Backbone, TodoTemplates) {
   
   var ENTER_KEY = 13;
   
