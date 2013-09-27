@@ -27,6 +27,7 @@ grunt
 
 ## References
 
+* http://addyosmani.github.io/backbone-fundamentals
 * http://backbonetutorials.com/organizing-backbone-using-modules/
 * http://requirejs.org/docs/api.html
 * https://github.com/jeromegn/Backbone.localStorage

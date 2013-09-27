@@ -96,7 +96,8 @@ module.exports = function (grunt) {
         },
         files: {
           "app/scripts/todo/templates/todo.js": "app/handlebars/todo/{,*/}/*.hbs",
-          "app/scripts/library/templates/library.js": "app/handlebars/library/{,*/}/*.hbs"
+          "app/scripts/library/templates/library.js": "app/handlebars/library/{,*/}/*.hbs",
+          "app/scripts/gallery/templates/gallery.js": "app/handlebars/gallery/{,*/}/*.hbs"
         }
       }
     }
