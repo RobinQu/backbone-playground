@@ -16,6 +16,10 @@ module.exports = function (grunt) {
   
   grunt.initConfig({
     watch: {
+      compass: {
+        files: ["app/scss/**/*.{scss,sass}"],
+        tasks: ["compass:build"]
+      },
       scripts: {
         files: ["app/scripts/**/*.js"],
         tasks: ["jshint"]
@@ -56,6 +60,25 @@ module.exports = function (grunt) {
             ];
           }
         }
+      }
+    },
+    
+    compass: {
+      options: {
+        sassDir: "app/scss",
+        cssDir: "app/css",
+        generatedImagesDir: "app/images/generated",
+        imagesDir: "app/images",
+        javascriptsDir: "app/scripts",
+        fontsDir: "app/fonts",
+        importPath: "app/bower_components",
+        httpImagesPath: "/images",
+        httpGeneratedImagesPath: "/images/generated",
+        httpFontsPath: "/fonts",
+        relativeAssets: false
+      },
+      build: {
+        debugInfo: true
       }
     },
     
@@ -104,7 +127,7 @@ module.exports = function (grunt) {
     
   });
   
-  grunt.registerTask("default", ["clean", "jshint", "handlebars", "connect:liveload", "open", "watch"]);
+  grunt.registerTask("default", ["clean", "compass:build", "jshint", "handlebars", "connect:liveload", "open", "watch"]);
   
   
 };
