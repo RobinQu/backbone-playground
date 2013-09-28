@@ -42,9 +42,10 @@ define(["require", "backbone", "jquery", "collections/photos", "views/pagination
       this.query = app.Queries.create({text:q});
       this.updateCollectionByQuery(q);
       if(window.navigator.onLine) {
+        this.paginationView.trigger("turn:start");
         flickr.search({
           text: q,
-          "per_page": 10,
+          "per_page": 30,
           page: page || 1
         })
         .done(this.handleResults.bind(this))
@@ -72,11 +73,11 @@ define(["require", "backbone", "jquery", "collections/photos", "views/pagination
     handleResults: function (data) {
       var photos = data.photos.photo;
       console.log("receiving data", photos.length);
-      this.paginationView.trigger("turn", {
+      this.paginationView.trigger("turn:end", {
         current: data.photos.page,
         pages: data.photos.pages,
         query: this.query.get("text"),
-        total: data.photos.perpage * data.photos.pages
+        total: data.photos.total
       });
       this.dismisLoading();
       // while(this.content.length) {

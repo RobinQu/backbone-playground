@@ -6,11 +6,16 @@ define(["backbone", "templates"], function (Backbone, GalleryTemplates) {
     template: GalleryTemplates.pagination,
     
     initialize: function () {
-      this.on("turn", this.render, this);
+      this.on("turn:start", this.beginTurning, this);
+      this.on("turn:end", this.render, this);
+    },
+    
+    beginTurning: function () {
+      this.$el.empty();
     },
     
     render: function (data) {
-      this.$el.empty().append(this.template(data));
+      this.$el.append(this.template(data));
       return this;
     }
     
