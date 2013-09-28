@@ -1,19 +1,29 @@
 /* line 1, ../scss/gallery.scss */
+#gallery {
+  width: 100%;
+}
+/* line 5, ../scss/gallery.scss */
+#gallery article {
+  padding: 1em;
+}
+/* line 10, ../scss/gallery.scss */
+#gallery .query input {
+  width: 100%;
+  font-size: 2em;
+}
+/* line 16, ../scss/gallery.scss */
 #gallery .photos .info {
   display: none;
 }
-
-/* line 6, ../scss/gallery.scss */
+/* line 20, ../scss/gallery.scss */
 #gallery .photos .list {
   list-style: none;
 }
-
-/* line 10, ../scss/gallery.scss */
+/* line 23, ../scss/gallery.scss */
 #gallery .photos .list li {
   float: left;
 }
-
-/* line 14, ../scss/gallery.scss */
+/* line 28, ../scss/gallery.scss */
 #gallery .navigation {
   clear: both;
 }
