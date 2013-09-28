@@ -1,0 +1,18 @@
+{{#gt pages 1}}
+<p>Total {{total}}, Page {{current}}/{{pages}}</p>
+{{else}}
+<p>Total {{total}}, Only one page</p>
+{{/gt}}
+
+<ul>
+  {{#gt current 1}}
+  <li>
+    <a href="#search/{{query}}/p{{subtract current 1}}">Prev</a>
+  </li>
+  {{/gt}}
+  {{#lt current pages}}
+  <li>
+    <a href="#search/{{query}}/p{{add current 1}}">Next</a>
+  </li>
+  {{/lt}}
+</ul>

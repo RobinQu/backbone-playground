@@ -1,4 +1,4 @@
-define(["require", "backbone", "jquery", "collections/photos", "views/photo", "utils/flickr"], function (require, Backbone, $, PhotosCollection, PhotoView, flickr) {
+define(["require", "backbone", "jquery", "collections/photos", "views/pagination", "views/photo", "utils/flickr"], function (require, Backbone, $, PhotosCollection, PaginationView, PhotoView, flickr) {
   return Backbone.View.extend({
     
     el: "#gallery .photos",
@@ -7,11 +7,12 @@ define(["require", "backbone", "jquery", "collections/photos", "views/photo", "u
       this.$info = this.$("div.info");
       this.$list = this.$("ul.list");
       this.on("search", this.runQuery);
+      this.content = null;
+      this.query = null;
+      this.paginationView = new PaginationView();
     },
-    
+
     results: {},
-    
-    content: null,
     
     updateCollectionByQuery: function (q) {
       if(this.content) {
@@ -21,27 +22,30 @@ define(["require", "backbone", "jquery", "collections/photos", "views/photo", "u
       
       var c = this.results[q];
       if(!c) {
-        this.results[q] = c = new (PhotosCollection.extend({
-          localStorage: new Backbone.LocalStorage("serach-results-" + q)
-        }))();
+        // this.results[q] = c = new (PhotosCollection.extend({
+        //   localStorage: new Backbone.LocalStorage("serach-results-" + q)
+        // }))();
+        this.results[q] = c = new PhotosCollection();
       }
       this.content = c;
       this.listenTo(this.content, "reset", this.addAll);
       this.listenTo(this.content, "add", this.addOne);
       this.listenTo(this.content, "all", this.render);
-      c.fetch();
+      // c.fetch();
       console.log("offline data", c.length);
       return c;
     },
     
-    runQuery: function (q) {
+    runQuery: function (q, page) {
+      console.log("search", q, "page", page);
       var app = require("app");
-      app.Queries.create({text:q});
+      this.query = app.Queries.create({text:q});
       this.updateCollectionByQuery(q);
       if(window.navigator.onLine) {
         flickr.search({
           text: q,
-          "per_page": 10
+          "per_page": 10,
+          page: page || 1
         })
         .done(this.handleResults.bind(this))
         .fail(this.showFailure.bind(this));
@@ -68,19 +72,27 @@ define(["require", "backbone", "jquery", "collections/photos", "views/photo", "u
     handleResults: function (data) {
       var photos = data.photos.photo;
       console.log("receiving data", photos.length);
+      this.paginationView.trigger("turn", {
+        current: data.photos.page,
+        pages: data.photos.pages,
+        query: this.query.get("text"),
+        total: data.photos.perpage * data.photos.pages
+      });
       this.dismisLoading();
-      
-      while(this.content.length) {
-        this.content.at(0).destroy();
-      }
+      // while(this.content.length) {
+      //   this.content.at(0).destroy();
+      // }
       if(photos.length) {
-        console.log(this.content.length);
+        // console.log(this.content.length);
         this.content.reset(photos);
-        console.log(this.content.length);
+        // console.log(this.content.length);
       } else {
         this.content.reset();
       }
-      this.content.invoke("save");
+      
+      // save to localstorage if neccessary
+      // this.content.invoke("save");
+      console.log("final size", this.content.length);
     },
     
     showFailure: function () {
@@ -90,7 +102,7 @@ define(["require", "backbone", "jquery", "collections/photos", "views/photo", "u
     addOne: function (item) {
       var view = new PhotoView({model: item});
       this.$list.append(view.render().el);
-      console.log("append", item.id);
+      // console.log("append", item.id);
     },
     
     addAll: function () {

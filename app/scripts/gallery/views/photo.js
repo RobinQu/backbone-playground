@@ -14,15 +14,8 @@ define(["backbone", "models/photo", "templates", "handlebars", "underscore"], fu
     
     initialize: function () {
       this.listenTo(this.model, "change", this.render);
-      this.listenTo(this.model, "destroy", this.del);
-      this.listenTo(this.model, "obsolete", this.del);
-    },
-    
-    del: function () {
-      // console.log("remove self", this.model.id);
-      console.log("ul", this.$el.parents("ul").length);
-      this.remove();
-      console.log("nodes", this.$el.parents("ul.list").find("li").length);
+      this.listenTo(this.model, "destroy", this.remove);
+      this.listenTo(this.model, "obsolete", this.remove);
     },
     
     render: function () {

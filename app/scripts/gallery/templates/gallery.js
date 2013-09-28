@@ -2,6 +2,84 @@ define(['handlebars'], function(Handlebars) {
 
 this["tpls"] = this["tpls"] || {};
 
+this["tpls"]["pagination"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, stack2, options, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
+
+function program1(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n<p>Total ";
+  if (stack1 = helpers.total) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.total; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + ", Page ";
+  if (stack1 = helpers.current) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.current; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "/";
+  if (stack1 = helpers.pages) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.pages; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</p>\n";
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n<p>Total ";
+  if (stack1 = helpers.total) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.total; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + ", Only one page</p>\n";
+  return buffer;
+  }
+
+function program5(depth0,data) {
+  
+  var buffer = "", stack1, options;
+  buffer += "\n  <li>\n    <a href=\"#search/";
+  if (stack1 = helpers.query) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.query; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "/p";
+  options = {hash:{},data:data};
+  buffer += escapeExpression(((stack1 = helpers.subtract || depth0.subtract),stack1 ? stack1.call(depth0, depth0.current, 1, options) : helperMissing.call(depth0, "subtract", depth0.current, 1, options)))
+    + "\">Prev</a>\n  </li>\n  ";
+  return buffer;
+  }
+
+function program7(depth0,data) {
+  
+  var buffer = "", stack1, options;
+  buffer += "\n  <li>\n    <a href=\"#search/";
+  if (stack1 = helpers.query) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.query; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "/p";
+  options = {hash:{},data:data};
+  buffer += escapeExpression(((stack1 = helpers.add || depth0.add),stack1 ? stack1.call(depth0, depth0.current, 1, options) : helperMissing.call(depth0, "add", depth0.current, 1, options)))
+    + "\">Next</a>\n  </li>\n  ";
+  return buffer;
+  }
+
+  options = {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),data:data};
+  stack2 = ((stack1 = helpers.gt || depth0.gt),stack1 ? stack1.call(depth0, depth0.pages, 1, options) : helperMissing.call(depth0, "gt", depth0.pages, 1, options));
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += "\n\n<ul>\n  ";
+  options = {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data};
+  stack2 = ((stack1 = helpers.gt || depth0.gt),stack1 ? stack1.call(depth0, depth0.current, 1, options) : helperMissing.call(depth0, "gt", depth0.current, 1, options));
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += "\n  ";
+  options = {hash:{},inverse:self.noop,fn:self.program(7, program7, data),data:data};
+  stack2 = ((stack1 = helpers.lt || depth0.lt),stack1 ? stack1.call(depth0, depth0.current, depth0.pages, options) : helperMissing.call(depth0, "lt", depth0.current, depth0.pages, options));
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += "\n</ul>";
+  return buffer;
+  });
+
 this["tpls"]["photo"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
