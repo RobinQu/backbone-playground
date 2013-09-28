@@ -1,4 +1,4 @@
-define(["backbone", "models/photo"], function (Backbone, Photo) {
+define(["backbone", "models/photo", "localstorage"], function (Backbone, Photo) {
   
   return Backbone.Collection.extend({
     

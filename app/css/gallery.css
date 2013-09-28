@@ -1,3 +1,16 @@
-#gallery .photos .loading {
+#gallery .photos .info {
   display: none;
+}
+
+
+#gallery .photos .list {
+  list-style: none;
+}
+
+#gallery .photos .list li {
+  float: left;
+}
+
+#gallery .navigation {
+  clear: both;
 }

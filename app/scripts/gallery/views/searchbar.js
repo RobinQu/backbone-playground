@@ -22,7 +22,7 @@ define(["require", "backbone", "views/query_list"], function (require, Backbone,
       });
       this.$input.val("");
       e.preventDefault();
-      app.router.navigate("search/" + query.get("text"));
+      app.router.navigate("search/" + query.get("text"), {trigger: true});
     }
     
   });
