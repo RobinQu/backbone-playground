@@ -75,9 +75,11 @@ define(["require", "backbone", "jquery", "collections/photos", "views/pagination
       console.log("receiving data", photos.length);
       this.paginationView.trigger("turn:end", {
         current: data.photos.page,
-        pages: data.photos.pages,
+        pages: Math.min(data.photos.pages, 10000),
         query: this.query.get("text"),
-        total: data.photos.total
+        //flickr limits result totals
+        total: data.photos.total,
+        available: photos.length
       });
       this.dismisLoading();
       // while(this.content.length) {

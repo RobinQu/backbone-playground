@@ -1,9 +1,10 @@
+{{#if available}}
+
 {{#gt pages 1}}
 <p>Total {{total}}, Page {{current}}/{{pages}}</p>
 {{else}}
 <p>Total {{total}}, Only one page</p>
 {{/gt}}
-
 <ul>
   {{#gt current 1}}
   <li>
@@ -16,3 +17,6 @@
   </li>
   {{/lt}}
 </ul>
+
+
+{{/if}}

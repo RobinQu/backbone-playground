@@ -5,9 +5,27 @@ this["tpls"] = this["tpls"] || {};
 this["tpls"]["pagination"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, stack2, options, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
+  var stack1, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
 
 function program1(depth0,data) {
+  
+  var buffer = "", stack1, stack2, options;
+  buffer += "\n\n";
+  options = {hash:{},inverse:self.program(4, program4, data),fn:self.program(2, program2, data),data:data};
+  stack2 = ((stack1 = helpers.gt || depth0.gt),stack1 ? stack1.call(depth0, depth0.pages, 1, options) : helperMissing.call(depth0, "gt", depth0.pages, 1, options));
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += "\n<ul>\n  ";
+  options = {hash:{},inverse:self.noop,fn:self.program(6, program6, data),data:data};
+  stack2 = ((stack1 = helpers.gt || depth0.gt),stack1 ? stack1.call(depth0, depth0.current, 1, options) : helperMissing.call(depth0, "gt", depth0.current, 1, options));
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += "\n  ";
+  options = {hash:{},inverse:self.noop,fn:self.program(8, program8, data),data:data};
+  stack2 = ((stack1 = helpers.lt || depth0.lt),stack1 ? stack1.call(depth0, depth0.current, depth0.pages, options) : helperMissing.call(depth0, "lt", depth0.current, depth0.pages, options));
+  if(stack2 || stack2 === 0) { buffer += stack2; }
+  buffer += "\n</ul>\n\n\n";
+  return buffer;
+  }
+function program2(depth0,data) {
   
   var buffer = "", stack1;
   buffer += "\n<p>Total ";
@@ -26,7 +44,7 @@ function program1(depth0,data) {
   return buffer;
   }
 
-function program3(depth0,data) {
+function program4(depth0,data) {
   
   var buffer = "", stack1;
   buffer += "\n<p>Total ";
@@ -37,7 +55,7 @@ function program3(depth0,data) {
   return buffer;
   }
 
-function program5(depth0,data) {
+function program6(depth0,data) {
   
   var buffer = "", stack1, options;
   buffer += "\n  <li>\n    <a href=\"#search/";
@@ -51,7 +69,7 @@ function program5(depth0,data) {
   return buffer;
   }
 
-function program7(depth0,data) {
+function program8(depth0,data) {
   
   var buffer = "", stack1, options;
   buffer += "\n  <li>\n    <a href=\"#search/";
@@ -65,19 +83,9 @@ function program7(depth0,data) {
   return buffer;
   }
 
-  options = {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),data:data};
-  stack2 = ((stack1 = helpers.gt || depth0.gt),stack1 ? stack1.call(depth0, depth0.pages, 1, options) : helperMissing.call(depth0, "gt", depth0.pages, 1, options));
-  if(stack2 || stack2 === 0) { buffer += stack2; }
-  buffer += "\n\n<ul>\n  ";
-  options = {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data};
-  stack2 = ((stack1 = helpers.gt || depth0.gt),stack1 ? stack1.call(depth0, depth0.current, 1, options) : helperMissing.call(depth0, "gt", depth0.current, 1, options));
-  if(stack2 || stack2 === 0) { buffer += stack2; }
-  buffer += "\n  ";
-  options = {hash:{},inverse:self.noop,fn:self.program(7, program7, data),data:data};
-  stack2 = ((stack1 = helpers.lt || depth0.lt),stack1 ? stack1.call(depth0, depth0.current, depth0.pages, options) : helperMissing.call(depth0, "lt", depth0.current, depth0.pages, options));
-  if(stack2 || stack2 === 0) { buffer += stack2; }
-  buffer += "\n</ul>";
-  return buffer;
+  stack1 = helpers['if'].call(depth0, depth0.available, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { return stack1; }
+  else { return ''; }
   });
 
 this["tpls"]["photo"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
