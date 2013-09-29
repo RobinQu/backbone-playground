@@ -1,0 +1,17 @@
+<div class="lightbox">
+  
+  <a href="#" class="back-btn">Go Back</a>
+  
+  <div class="info"></div>
+  
+  <img src="{{imgurl size='z'}}" alt="{{title}}" />
+  
+  <ul class="tags">
+    {{#each tags.tag}}
+    <li><a href="#search/{{_content}}">{{_content}}</a></li>
+    {{else}}
+    <li>No tags</li>
+    {{/each}}
+  </ul>
+  
+</div>

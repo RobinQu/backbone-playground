@@ -1,29 +1,152 @@
-/* line 1, ../scss/gallery.scss */
-#gallery {
-  width: 100%;
+/* line 17, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
 }
-/* line 5, ../scss/gallery.scss */
-#gallery article {
-  padding: 1em;
+
+/* line 22, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
 }
-/* line 10, ../scss/gallery.scss */
-#gallery .query input {
-  width: 100%;
-  font-size: 2em;
-}
-/* line 16, ../scss/gallery.scss */
-#gallery .photos .info {
-  display: none;
-}
-/* line 20, ../scss/gallery.scss */
-#gallery .photos .list {
+
+/* line 24, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
   list-style: none;
 }
-/* line 23, ../scss/gallery.scss */
-#gallery .photos .list li {
-  float: left;
+
+/* line 26, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
-/* line 28, ../scss/gallery.scss */
-#gallery .navigation {
+
+/* line 28, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 17, ../scss/gallery.scss */
+* {
+  box-sizing: border-box;
+}
+
+/* line 21, ../scss/gallery.scss */
+.pane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+/* line 29, ../scss/gallery.scss */
+#search {
+  z-index: 100;
+}
+/* line 32, ../scss/gallery.scss */
+#search .query {
+  color: #95a5a6;
+}
+/* line 35, ../scss/gallery.scss */
+#search .query fieldset {
+  padding: 1em;
+  border-bottom: 1px solid #95a5a6;
+}
+/* line 40, ../scss/gallery.scss */
+#search .query input {
+  width: 100%;
+  font-size: 2em;
+  border: 0;
+  background: #ecf0f1;
+  border-radius: 10px;
+  padding: 0.5em 1em;
+  outline: none;
+}
+/* line 50, ../scss/gallery.scss */
+#search .query .query-histroy a {
+  padding: 1em 1em;
+  text-decoration: none;
+  color: #95a5a6;
+  display: block;
+  border-bottom: 1px solid #ecf0f1;
+}
+/* line 56, ../scss/gallery.scss */
+#search .query .query-histroy a:hover, #search .query .query-histroy a:active {
+  color: white;
+  background: #e74c3c;
+  border-bottom: #c0392b;
+}
+/* line 65, ../scss/gallery.scss */
+#search .photos .info {
+  display: none;
+}
+/* line 69, ../scss/gallery.scss */
+#search .photos .list {
+  display: none;
+  list-style: none;
+  padding: 0.5em;
+}
+/* line 74, ../scss/gallery.scss */
+#search .photos .list li {
+  float: left;
+  padding: 0.5em;
+}
+/* line 77, ../scss/gallery.scss */
+#search .photos .list li img {
+  width: 150px;
+  height: 150px;
+}
+/* line 85, ../scss/gallery.scss */
+#search .navigation, #search .info {
   clear: both;
+  padding: 1em;
+}
+
+/* line 92, ../scss/gallery.scss */
+#lightbox {
+  z-index: 200;
+  background: white;
+  display: none;
+}
+/* line 96, ../scss/gallery.scss */
+#lightbox img {
+  max-width: 100%;
 }

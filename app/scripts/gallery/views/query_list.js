@@ -7,7 +7,12 @@ define(["require", "jquery", "backbone", "views/query_item"], function (require,
       var app = require("app");
       this.listenTo(app.Queries, "add", this.addOne);
       this.listenTo(app.Queries, "reset", this.addAll);
+      this.listenTo(app, "search", this.hide);
       app.Queries.fetch();
+    },
+    
+    hide: function () {
+      this.$el.hide();
     },
     
     addOne: function (query) {

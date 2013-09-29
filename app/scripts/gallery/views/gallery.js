@@ -4,15 +4,14 @@ define(["require", "backbone", "jquery", "collections/photos", "views/pagination
     el: "#gallery .photos",
     
     initialize: function () {
+      var app = require("app");
       this.$info = this.$("div.info");
       this.$list = this.$("ul.list");
-      this.on("search", this.runQuery);
+      this.listenTo(app, "search", this.runQuery);
       this.content = null;
       this.query = null;
       this.paginationView = new PaginationView();
     },
-
-    results: {},
     
     updateCollectionByQuery: function (q) {
       if(this.content) {
@@ -20,14 +19,15 @@ define(["require", "backbone", "jquery", "collections/photos", "views/pagination
         this.stopListening(this.content);
       }
       
-      var c = this.results[q];
+      var app = require("app"),
+          c = app.results[q];
       if(!c) {
         // this.results[q] = c = new (PhotosCollection.extend({
         //   localStorage: new Backbone.LocalStorage("serach-results-" + q)
         // }))();
-        this.results[q] = c = new PhotosCollection();
+        app.results[q] = c = new PhotosCollection();
       }
-      this.content = c;
+      this.content = app.currentCollection = c;
       this.listenTo(this.content, "reset", this.addAll);
       this.listenTo(this.content, "add", this.addOne);
       this.listenTo(this.content, "all", this.render);
@@ -39,6 +39,7 @@ define(["require", "backbone", "jquery", "collections/photos", "views/pagination
     runQuery: function (q, page) {
       console.log("search", q, "page", page);
       var app = require("app");
+      this.showList();
       this.query = app.Queries.create({text:q});
       this.updateCollectionByQuery(q);
       if(window.navigator.onLine) {
@@ -52,6 +53,14 @@ define(["require", "backbone", "jquery", "collections/photos", "views/pagination
         .fail(this.showFailure.bind(this));
         this.showLoading();
       }
+    },
+    
+    showList: function () {
+      this.$list.show();
+    },
+    
+    hideList: function () {
+      this.$list.hide();
     },
     
     showInfo: function (text) {

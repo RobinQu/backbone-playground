@@ -19,6 +19,13 @@ define(["jquery", "underscore"], function ($, _) {
     }));
   };
   
+  flickr.getInfo = function (id) {
+    return flickr.request({
+      method: "flickr.photos.getInfo",
+      "photo_id": id
+    });
+  };
+  
   return flickr;
   
 });

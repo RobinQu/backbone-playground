@@ -1,4 +1,4 @@
-define(["backbone", "models/photo", "templates", "handlebars", "underscore"], function (Backbone, Photo, GalleryTemplates, Handlebars,  _) {
+define(["require", "backbone", "models/photo", "templates", "handlebars", "underscore"], function (require, Backbone, Photo, GalleryTemplates, Handlebars,  _) {
   
   var URL = _.template("http://farm<%= farm %>.staticflickr.com/<%= server %>/<%= id %>_<%= secret %>_<%= size %>.jpg");
   
@@ -25,7 +25,6 @@ define(["backbone", "models/photo", "templates", "handlebars", "underscore"], fu
       this.$el.append(this.template(this.model.toJSON()));
       return this;
     }
-    
     
   });
   

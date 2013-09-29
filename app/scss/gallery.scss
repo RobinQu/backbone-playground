@@ -1,15 +1,64 @@
-#gallery {
-  
+@import "compass/reset";
+
+$MIDNIGHT_BLUE: #2C3E50;
+$WET_ASPHALT: #34495E;
+$GREEN_SEA: #16A085;
+$TURQUOISE: #1ABC9C;
+$CONCRETE: #95A5A6;
+$CLOUDS: #ECF0F1;
+$SILVER: #BDC3C7;
+$AMETHYST: #9B59B6;
+$WISTERIA: #8E44AD;
+$POMEGRANATE: #C0392B;
+$ALIZARIN: #E74C3C;
+$EMERALD: #2ECC71;
+$NEPHRITIS: #27AE60;
+
+* {
+  box-sizing: border-box;
+}
+
+.pane {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  
-  article {
-    padding: 1em;
-  }
-  
+  min-height: 100%;
+}
+
+#search {
+  z-index: 100;
+
   .query {
+    color: $CONCRETE;
+    
+    fieldset {
+      padding: 1em;
+      border-bottom: 1px solid $CONCRETE;
+    }
+    
     input {
       width: 100%;
       font-size: 2em;
+      border: 0;
+      background: $CLOUDS;
+      border-radius: 10px;
+      padding: 0.5em 1em;
+      outline: none;
+    }
+    .query-histroy {
+      a {
+        padding: 1em 1em;
+        text-decoration: none;
+        color: $CONCRETE;
+        display: block;
+        border-bottom: 1px solid $CLOUDS;
+        &:hover, &:active {
+          color: white;
+          background: $ALIZARIN;
+          border-bottom: $POMEGRANATE;
+        }
+      }
     }
   }
   
@@ -18,15 +67,33 @@
   }
   
   .photos .list {
+    display: none;
     list-style: none;
+    padding: 0.5em;
     
     li {
       float: left;
+      padding: 0.5em;
+      img {
+        width: 150px;
+        height: 150px;
+      }
+      
     }
   }
   
-  .navigation {
+  .navigation, .info {
     clear: both;
+    padding: 1em;
   }
   
 } 
+
+#lightbox {
+  z-index: 200;
+  background: white;
+  display: none;
+  img {
+    max-width: 100%;
+  }
+}
