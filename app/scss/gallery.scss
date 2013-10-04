@@ -18,55 +18,70 @@ $NEPHRITIS: #27AE60;
   box-sizing: border-box;
 }
 
+.outlet {
+  position: relative;
+}
+
 .pane {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   min-height: 100%;
+  display: none;
+  z-index: 100;
+  
+  &.active {
+    z-index: 200;
+    display: block;
+  }
 }
 
-#search {
-  z-index: 100;
-
-  .query {
-    color: $CONCRETE;
-    
-    fieldset {
-      padding: 1em;
-      border-bottom: 1px solid $CONCRETE;
-    }
-    
-    input {
-      width: 100%;
-      font-size: 2em;
-      border: 0;
-      background: $CLOUDS;
-      border-radius: 10px;
-      padding: 0.5em 1em;
-      outline: none;
-    }
-    .query-histroy {
-      a {
-        padding: 1em 1em;
-        text-decoration: none;
-        color: $CONCRETE;
-        display: block;
-        border-bottom: 1px solid $CLOUDS;
-        &:hover, &:active {
-          color: white;
-          background: $ALIZARIN;
-          border-bottom: $POMEGRANATE;
-        }
-      }
-    }
+#searchForm {
+  color: $CONCRETE;
+  
+  fieldset {
+    padding: 1em;
+    border-bottom: 1px solid $CONCRETE;
   }
   
-  .photos .info {
+  input {
+    width: 100%;
+    font-size: 2em;
+    border: 0;
+    background: $CLOUDS;
+    border-radius: 10px;
+    padding: 0.5em 1em;
+    outline: none;
+  }
+}
+
+#queries {
+  a {
+    padding: 1em 1em;
+    text-decoration: none;
+    color: $CONCRETE;
+    display: block;
+    border-bottom: 1px solid $CLOUDS;
+    &:hover, &:active {
+      color: white;
+      background: $ALIZARIN;
+      border-bottom: $POMEGRANATE;
+    }
+  }
+  ul {
+    list-style: none;
+  }
+}
+
+
+#photos {
+
+  .info {
     display: none;
   }
   
-  .photos .list {
+  .list {
     display: none;
     list-style: none;
     padding: 0.5em;
@@ -90,9 +105,7 @@ $NEPHRITIS: #27AE60;
 } 
 
 #lightbox {
-  z-index: 200;
   background: white;
-  display: none;
   img {
     max-width: 100%;
   }

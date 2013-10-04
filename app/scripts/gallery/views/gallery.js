@@ -1,8 +1,8 @@
 define(["require", "backbone", "jquery", "collections/photos", "views/pagination", "views/photo", "utils/flickr"], function (require, Backbone, $, PhotosCollection, PaginationView, PhotoView, flickr) {
   return Backbone.View.extend({
     
-    el: "#gallery .photos",
-    
+    el: "#photos",
+
     initialize: function () {
       var app = require("app");
       this.$info = this.$("div.info");

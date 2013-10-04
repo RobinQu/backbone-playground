@@ -9,8 +9,11 @@ require.config({
   },
   
   shim: {
+    templates: {
+      deps: ["handlebars", "utils/handlebars_helpers"]
+    },
     backbone: {
-      deps: ["jquery","underscore","handlebars", "utils/handlebars_helpers"],
+      deps: ["jquery","underscore","handlebars"],
       exports: "Backbone"
     },
     underscore: {

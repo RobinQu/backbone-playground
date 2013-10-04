@@ -1,7 +1,7 @@
 define(["require", "jquery", "backbone", "views/query_item"], function (require, $, Backbone, QueryItemView) {
   return Backbone.View.extend({
     
-    el: "#gallery .query-histroy",
+    el: "#queries",
     
     initialize: function () {
       var app = require("app");

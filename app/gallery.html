@@ -8,22 +8,25 @@
 <body>
 
 <div id="gallery">
-  <article id="search" class="pane">
+  <article>
     <header>
-      <form action="#" class="query">
+      <form action="#" class="query" id="searchForm">
         <fieldset>
           <input type="text" name="keyword" placeholder="Serach..." />
         </fieldset>
         <ul class="query-histroy"></ul>
       </form>
     </header>
-    <section class="photos">
-      <div class="info"></div>
-      <ul class="list"></ul>
-      <div class="navigation"></div>
-    </section>
+    <div class="outlet">
+      <section id="queries" class="pane"></section>
+      <section id="photos" class="pane">
+        <div class="info"></div>
+        <ul class="list"></ul>
+        <div class="navigation"></div>
+      </section>
+      <section id="lightbox" class="pane"></section>
+    </div>
   </article>
-  <article id="lightbox" class="pane"></article>
 </div>
 
 <script data-main="scripts/gallery/main" src="bower_components/requirejs/require.js"></script>

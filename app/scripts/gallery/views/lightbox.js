@@ -4,6 +4,10 @@ define(["require", "backbone", "underscore", "jquery", "templates", "models/phot
     
     el: "#lightbox",
     
+    load: function() {
+      this.$el.show();
+    },
+    
     initialize: function () {
       var app = require("app");
       this.listenTo(app, "view", this.loadPhoto);

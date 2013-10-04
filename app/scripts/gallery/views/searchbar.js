@@ -1,10 +1,10 @@
-define(["require", "backbone", "views/query_list"], function (require, Backbone, QueryListView) {
+define(["require", "backbone", "views/query_list"], function (require, Backbone) {
   
   // var ENTER_KEY = 13;
   
   return Backbone.View.extend({
     
-    el: "#gallery form",
+    el: "#searchForm",
         
     events: {
       "submit": "createQuery",
@@ -13,7 +13,6 @@ define(["require", "backbone", "views/query_list"], function (require, Backbone,
     
     initialize: function () {
       var app = require("app");
-      this.listView = new QueryListView();
       this.$input = this.$("input").focus();
       this.listenTo(app, "search", this.startSearch);
     },
