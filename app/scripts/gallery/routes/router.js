@@ -33,9 +33,14 @@ define(["require", "backbone"], function (require, Backbone) {
         console.log("unknown view", name);
         return false;
       }
+      console.log("loadview", arguments);
       app.trigger("view:will:leave", app.currentView);
-      if(app.currentView && app.currentView.unload) {
-        app.currentView.unload(name);
+      
+      if(app.currentView) {
+        app.currentView.$el.removeClass("active");
+        if(app.currentView.unload) {
+          app.currentView.unload(name);
+        }
       }
       app.trigger("view:did:leave", app.currentView);
       view.$el.addClass("active");

@@ -1,4 +1,8 @@
+$FontAwesomePath: "/bower_components/font-awesome/font";
+
 @import "compass/reset";
+@import "compass/utilities/general/clearfix";
+@import "font-awesome/scss/font-awesome";
 
 $MIDNIGHT_BLUE: #2C3E50;
 $WET_ASPHALT: #34495E;
@@ -14,8 +18,16 @@ $ALIZARIN: #E74C3C;
 $EMERALD: #2ECC71;
 $NEPHRITIS: #27AE60;
 
+body {
+  font: 10px/1.25 Tahoma, Arial, Helvetica, "Microsoft YaHei New", "Microsoft Yahei", "微软雅黑", 宋体, SimSun, STXihei, "华文细黑", sans-serif;
+}
+
 * {
   box-sizing: border-box;
+}
+
+.clearfix {
+  @include pie-clearfix;
 }
 
 .outlet {
@@ -30,7 +42,6 @@ $NEPHRITIS: #27AE60;
   min-height: 100%;
   display: none;
   z-index: 100;
-  
   &.active {
     z-index: 200;
     display: block;
@@ -47,7 +58,7 @@ $NEPHRITIS: #27AE60;
   
   input {
     width: 100%;
-    font-size: 2em;
+    font-size: 3em;
     border: 0;
     background: $CLOUDS;
     border-radius: 10px;
@@ -71,6 +82,7 @@ $NEPHRITIS: #27AE60;
   }
   ul {
     list-style: none;
+    font-size: 1.6em;
   }
 }
 
@@ -79,6 +91,7 @@ $NEPHRITIS: #27AE60;
 
   .info {
     display: none;
+    font-size: 2em;
   }
   
   .list {
@@ -100,13 +113,66 @@ $NEPHRITIS: #27AE60;
   .navigation, .info {
     clear: both;
     padding: 1em;
+    font-size: 1.6em;
   }
   
 } 
 
 #lightbox {
   background: white;
+  .content {
+    position: relative;
+    text-align: center;
+    &:hover {
+      .back-btn {
+        display: block;
+      }
+    }
+  }
   img {
+    display: block;
+    margin: 0 auto;
     max-width: 100%;
   }
+  .back-btn {
+    text-decoration: none;
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: black;
+    opacity: 0.5;
+    color: white;
+    span {
+      position: absolute;
+      top: 50%;
+      left: 1em;
+      font-size: 4em;
+      line-height: 100%;
+      vertical-align: middle;
+      display: inline-block;
+    }
+  }
+  .tags {
+    margin-top: 0.5em;
+    li {
+      float: left;
+      margin: 0.25em;
+      font-size: 1.6em;
+      a {
+        border-radius: 5px;
+        background: $MIDNIGHT_BLUE;
+        color: white;
+        padding: 0.25em 0.5em;
+        display: block;
+        text-decoration: none;
+        &:hover {
+          background: $WET_ASPHALT;
+        }
+      }
+    }
+  }
+  
 }

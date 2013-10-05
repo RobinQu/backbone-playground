@@ -28,7 +28,7 @@ function program3(depth0,data) {
   return "\n    <li>No tags</li>\n    ";
   }
 
-  buffer += "<div class=\"lightbox\">\n  \n  <a href=\"#\" class=\"back-btn\">Go Back</a>\n  \n  <div class=\"info\"></div>\n  \n  <img src=\"";
+  buffer += "<div class=\"lightbox\">\n  \n  <div class=\"info\"></div>\n  <div class=\"content\">\n    <a href=\"#\" class=\"back-btn\"><span><i class=\"icon-chevron-left\"></i></span></a>\n    <img src=\"";
   options = {hash:{
     'size': ("z")
   },data:data};
@@ -37,7 +37,7 @@ function program3(depth0,data) {
   if (stack2 = helpers.title) { stack2 = stack2.call(depth0, {hash:{},data:data}); }
   else { stack2 = depth0.title; stack2 = typeof stack2 === functionType ? stack2.apply(depth0) : stack2; }
   buffer += escapeExpression(stack2)
-    + "\" />\n  \n  <ul class=\"tags\">\n    ";
+    + "\" />\n  </div>\n  \n  \n  <ul class=\"tags\">\n    ";
   stack2 = helpers.each.call(depth0, ((stack1 = depth0.tags),stack1 == null || stack1 === false ? stack1 : stack1.tag), {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),data:data});
   if(stack2 || stack2 === 0) { buffer += stack2; }
   buffer += "\n  </ul>\n  \n</div>";

@@ -19,6 +19,7 @@
     "requirejs": "~2.1.8",
     "backbone.localStorage": "~1.1.6",
     "todomvc-common": "~0.1.8",
-    "handlebars.js": "~1.0.12"
+    "handlebars.js": "~1.0.12",
+    "font-awesome": "~3.2.1"
   }
 }

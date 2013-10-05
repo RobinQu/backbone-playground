@@ -4,10 +4,6 @@ define(["require", "backbone", "underscore", "jquery", "templates", "models/phot
     
     el: "#lightbox",
     
-    load: function() {
-      this.$el.show();
-    },
-    
     initialize: function () {
       var app = require("app");
       this.listenTo(app, "view", this.loadPhoto);
@@ -21,11 +17,11 @@ define(["require", "backbone", "underscore", "jquery", "templates", "models/phot
       "load img": "stopLoading"
     },
     
-    template: GalleryTemplates.lightbox,
-    
-    hide: function () {
-      this.$el.hide();
+    load: function(id) {
+      this.loadPhoto(id);
     },
+    
+    template: GalleryTemplates.lightbox,
     
     goBack: function (e) {
       console.log("go back btn");
@@ -36,7 +32,6 @@ define(["require", "backbone", "underscore", "jquery", "templates", "models/phot
     loadPhoto: function (id) {
       var app = require("app");
       this.startLoading();
-      this.$el.show();
       if(app.currentCollection) {
         this.model = app.currentCollection.get(id);
         this.render();

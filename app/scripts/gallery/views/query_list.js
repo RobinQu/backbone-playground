@@ -8,6 +8,7 @@ define(["require", "jquery", "backbone", "views/query_item"], function (require,
       this.listenTo(app.Queries, "add", this.addOne);
       this.listenTo(app.Queries, "reset", this.addAll);
       this.listenTo(app, "search", this.hide);
+      this.$ul = $("<ul />").appendTo(this.$el);
       app.Queries.fetch();
     },
     
@@ -17,15 +18,17 @@ define(["require", "jquery", "backbone", "views/query_item"], function (require,
     
     addOne: function (query) {
       var item = new QueryItemView({model:query});
-      this.$el.append(item.render().el);
+      this.$ul.append(item.render().el);
     },
     
     addAll: function () {
       var app = require("app");
-      this.$el.empty();
+      this.$ul.empty();
       app.Queries.each(this.addOne, this);
       return this;
     }
+    
+    
     
     
   });
