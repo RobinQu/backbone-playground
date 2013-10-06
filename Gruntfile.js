@@ -1,4 +1,5 @@
-"use strict";
+/*global __dirname */
+
 var path = require("path");
 var LIVERELOAD_PORT = 35729;
 var lrSnippet = require("connect-livereload")({port: LIVERELOAD_PORT});
@@ -8,6 +9,7 @@ var mountFolder = function (connect, dir) {
 
 
 module.exports = function (grunt) {
+  "use strict";
     
   // show elapsed time at the end
   require("time-grunt")(grunt);
