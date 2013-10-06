@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gallery</title>
     <link rel="stylesheet" href="css/gallery.css" />
 </head>
@@ -12,17 +13,20 @@
     <header>
       <form action="#" class="query" id="searchForm">
         <fieldset>
-          <input type="text" name="keyword" placeholder="Serach..." />
+          <div class="wrapper">
+            <a href="#" class="home-btn icon-btn"><i class="icon-th"></i></a>
+            <input type="text" name="keyword" placeholder="Serach..." />
+            <a href="#" class="close-btn icon-btn"><i class="icon-remove-sign"></i></a>
+          </div>
+          <ul class="query-history"></ul>
         </fieldset>
-        <ul class="query-histroy"></ul>
       </form>
     </header>
     <div class="outlet clearfix">
-      <section id="queries" class="pane">
       </section>
       <section id="photos" class="pane">
         <div class="info"></div>
-        <ul class="list"></ul>
+        <ul class="list clearfix"></ul>
         <div class="navigation"></div>
       </section>
       <section id="lightbox" class="pane"></section>

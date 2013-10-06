@@ -15,7 +15,7 @@ define(["backbone", "templates"], function (Backbone, GalleryTemplates) {
     },
     
     render: function (data) {
-      this.$el.append(this.template(data));
+      this.$el.empty().append(this.template(data));
       return this;
     }
     

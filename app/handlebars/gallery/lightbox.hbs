@@ -2,14 +2,19 @@
   
   <div class="info"></div>
   <div class="content">
-    <a href="#" class="back-btn"><span><i class="icon-chevron-left"></i></span></a>
-    <img src="{{imgurl size='z'}}" alt="{{title}}" />
+    <img src="{{imgurl photo size='z'}}" alt="{{photo.title}}" />
+    {{#if prev}}
+    <a href="#view/{{prev.id}}" class="navi-btn prev"><span><i class="icon-chevron-left"></i></span></a>
+    {{/if}}
+    {{#if next}}
+    <a href="#view/{{next.id}}" class="navi-btn next"><span><i class="icon-chevron-right"></i></span></a>
+    {{/if}}
   </div>
   
   
   <ul class="tags">
-    {{#each tags.tag}}
-    <li><a href="#search/{{_content}}">{{_content}}</a></li>
+    {{#each photo.tags}}
+    <li><a href="#search/{{this}}">{{this}}</a></li>
     {{else}}
     <li>No tags</li>
     {{/each}}

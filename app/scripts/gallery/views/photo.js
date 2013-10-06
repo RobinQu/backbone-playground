@@ -2,11 +2,11 @@ define(["require", "backbone", "models/photo", "templates", "handlebars", "under
   
   var URL = _.template("http://farm<%= farm %>.staticflickr.com/<%= server %>/<%= id %>_<%= secret %>_<%= size %>.jpg");
   
-  Handlebars.registerHelper("imgurl", function (options) {
+  Handlebars.registerHelper("imgurl", function (photo, options) {
     var size = (typeof options.hash.size === "string") ? options.hash.size : "s";
     return URL(_.extend({
       size: size
-    }, this));
+    }, photo));
   });
   
   return Backbone.View.extend({

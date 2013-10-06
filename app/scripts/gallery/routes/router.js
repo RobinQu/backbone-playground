@@ -1,5 +1,5 @@
-define(["require", "backbone"], function (require, Backbone) {
-  var slice = Array.prototype.slice.call.bind(Array.prototype.slice);
+define(["require", "backbone", "app"], function (require, Backbone) {
+  
   
   return Backbone.Router.extend({
     routes: {
@@ -10,46 +10,25 @@ define(["require", "backbone"], function (require, Backbone) {
     },
     
     home: function() {
-      this.loadView("querylist");
+      var app = require("app");
+      app.searchbar.focusInput();
+      document.title = "Gallery";
     },
     
     search: function (query, page) {
       var app = require("app");
       app.trigger("search", query, page);
-      this.loadView("gallery", query, page);
+      app.outletView.loadView("gallery", query, page);
+      document.title = [query, "search", "Gallery"].join(" - ");
     },
     
     view: function (id) {
-      this.loadView("lightbox", id);
-    },
-    
-    loadView: function() {
-      var args = slice(arguments, 0),
-          name = args.shift(),
-          app = require("app"),
-          view = app[name];
-      if(!view) {
-        app.trigger("view:unknown");
-        console.log("unknown view", name);
-        return false;
-      }
-      console.log("loadview", arguments);
-      app.trigger("view:will:leave", app.currentView);
-      
-      if(app.currentView) {
-        app.currentView.$el.removeClass("active");
-        if(app.currentView.unload) {
-          app.currentView.unload(name);
-        }
-      }
-      app.trigger("view:did:leave", app.currentView);
-      view.$el.addClass("active");
-      app.currentView = view;
-      app.trigger("view:will:enter", view);
-      if(view.load) {
-        view.load.apply(view, args);
-      }
-      app.trigger("view:did:enter", view);
+      var app = require("app");
+      app.outletView.loadView("lightbox", id);
+      app.trigger("view", id);
+      document.title = [id, "photo", "Gallery"].join(" - ");
     }
+    
+    
   });
 });

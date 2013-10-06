@@ -2367,9 +2367,10 @@ body {
 /* line 25, ../scss/gallery.scss */
 * {
   box-sizing: border-box;
+  user-select: none;
 }
 
-/* line 29, ../scss/gallery.scss */
+/* line 30, ../scss/gallery.scss */
 .clearfix {
   *zoom: 1;
 }
@@ -2380,12 +2381,12 @@ body {
   clear: both;
 }
 
-/* line 33, ../scss/gallery.scss */
+/* line 34, ../scss/gallery.scss */
 .outlet {
   position: relative;
 }
 
-/* line 37, ../scss/gallery.scss */
+/* line 38, ../scss/gallery.scss */
 .pane {
   position: absolute;
   top: 0;
@@ -2395,114 +2396,202 @@ body {
   display: none;
   z-index: 100;
 }
-/* line 45, ../scss/gallery.scss */
+/* line 46, ../scss/gallery.scss */
 .pane.active {
   z-index: 200;
   display: block;
 }
 
-/* line 51, ../scss/gallery.scss */
+/* line 52, ../scss/gallery.scss */
 #searchForm {
   color: #95a5a6;
+  background: white;
 }
-/* line 54, ../scss/gallery.scss */
+/* line 56, ../scss/gallery.scss */
 #searchForm fieldset {
   padding: 1em;
-  border-bottom: 1px solid #95a5a6;
-}
-/* line 59, ../scss/gallery.scss */
-#searchForm input {
-  width: 100%;
   font-size: 3em;
-  border: 0;
   background: #ecf0f1;
-  border-radius: 10px;
-  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  margin: 1em;
+}
+/* line 64, ../scss/gallery.scss */
+#searchForm input {
+  border: 0;
   outline: none;
+  font-size: 1em;
+  background: none;
+  margin: 0;
+  width: 80%;
+  display: inline-block;
 }
-
-/* line 71, ../scss/gallery.scss */
-#queries a {
-  padding: 1em 1em;
+/* line 74, ../scss/gallery.scss */
+#searchForm .icon-btn {
   text-decoration: none;
-  color: #95a5a6;
-  display: block;
-  border-bottom: 1px solid #ecf0f1;
-}
-/* line 77, ../scss/gallery.scss */
-#queries a:hover, #queries a:active {
-  color: white;
-  background: #e74c3c;
-  border-bottom: #c0392b;
+  display: inline-block;
+  color: #bdc3c7;
+  width: 15%;
+  text-align: center;
 }
 /* line 83, ../scss/gallery.scss */
-#queries ul {
-  list-style: none;
-  font-size: 1.6em;
+#searchForm .home-btn {
+  display: none;
+  border-right: 1px solid #bdc3c7;
+}
+/* line 88, ../scss/gallery.scss */
+#searchForm .close-btn {
+  display: none;
+  float: right;
+  text-align: right;
+}
+/* line 92, ../scss/gallery.scss */
+#searchForm .close-btn i {
+  vertical-align: middle;
+}
+/* line 98, ../scss/gallery.scss */
+#searchForm.in-session .home-btn {
+  display: inline-block;
+}
+/* line 101, ../scss/gallery.scss */
+#searchForm.in-session input {
+  width: 66%;
+}
+/* line 106, ../scss/gallery.scss */
+#searchForm .query-history {
+  display: none;
+}
+/* line 108, ../scss/gallery.scss */
+#searchForm .query-history li {
+  padding: 0.25em 0.5em;
+  font-size: 0.8em;
+}
+/* line 111, ../scss/gallery.scss */
+#searchForm .query-history li:first-child {
+  margin-top: 1em;
+}
+/* line 114, ../scss/gallery.scss */
+#searchForm .query-history li a {
+  text-decoration: none;
+  color: #95a5a6;
+}
+/* line 117, ../scss/gallery.scss */
+#searchForm .query-history li a:hover {
+  color: #9b59b6;
+}
+/* line 124, ../scss/gallery.scss */
+#searchForm.expanded {
+  width: 100%;
+}
+/* line 127, ../scss/gallery.scss */
+#searchForm.expanded input {
+  color: #34495e;
+}
+/* line 130, ../scss/gallery.scss */
+#searchForm.expanded .query-history {
+  display: block;
 }
 
-/* line 92, ../scss/gallery.scss */
+/* line 139, ../scss/gallery.scss */
 #photos .info {
   display: none;
   font-size: 2em;
+  padding: 1em 1.5em;
+  color: #bdc3c7;
 }
-/* line 97, ../scss/gallery.scss */
+/* line 146, ../scss/gallery.scss */
 #photos .list {
   display: none;
   list-style: none;
-  padding: 0.5em;
+  padding: 0 0 3em 3em;
 }
-/* line 102, ../scss/gallery.scss */
+/* line 151, ../scss/gallery.scss */
 #photos .list li {
   float: left;
-  padding: 0.5em;
+  padding-right: 3em;
+  padding-bottom: 3em;
 }
-/* line 105, ../scss/gallery.scss */
+/* line 155, ../scss/gallery.scss */
 #photos .list li img {
   width: 150px;
   height: 150px;
 }
-/* line 113, ../scss/gallery.scss */
+/* line 163, ../scss/gallery.scss */
 #photos .navigation, #photos .info {
   clear: both;
-  padding: 1em;
-  font-size: 1.6em;
+}
+/* line 167, ../scss/gallery.scss */
+#photos .navigation {
+  padding: 3em;
+}
+/* line 170, ../scss/gallery.scss */
+#photos .navigation .page-counter {
+  margin: 0.5em;
+  font-size: 2em;
+  color: #bdc3c7;
+  text-align: center;
+}
+/* line 177, ../scss/gallery.scss */
+#photos .navigation .navi {
+  border-radius: 0.5em;
+  background: #ecf0f1;
+  overflow: hidden;
+}
+/* line 181, ../scss/gallery.scss */
+#photos .navigation .navi li {
+  float: left;
+  width: 50%;
+  visibility: hidden;
+}
+/* line 185, ../scss/gallery.scss */
+#photos .navigation .navi li.active {
+  visibility: visible;
+}
+/* line 189, ../scss/gallery.scss */
+#photos .navigation .navi a {
+  text-decoration: none;
+  padding: 0.5em 1em;
+  font-size: 2em;
+  color: #2c3e50;
+  display: block;
+  text-align: center;
+}
+/* line 197, ../scss/gallery.scss */
+#photos .navigation .navi a:hover {
+  background: #95a5a6;
+  color: white;
 }
 
-/* line 121, ../scss/gallery.scss */
+/* line 215, ../scss/gallery.scss */
 #lightbox {
   background: white;
 }
-/* line 123, ../scss/gallery.scss */
+/* line 217, ../scss/gallery.scss */
 #lightbox .content {
   position: relative;
   text-align: center;
 }
-/* line 127, ../scss/gallery.scss */
-#lightbox .content:hover .back-btn {
-  display: block;
-}
-/* line 132, ../scss/gallery.scss */
+/* line 221, ../scss/gallery.scss */
 #lightbox img {
   display: block;
   margin: 0 auto;
   max-width: 100%;
 }
-/* line 137, ../scss/gallery.scss */
-#lightbox .back-btn {
+/* line 226, ../scss/gallery.scss */
+#lightbox .navi-btn {
   text-decoration: none;
   position: absolute;
-  display: none;
   top: 0;
   left: 0;
   width: 50%;
   height: 100%;
   background: black;
-  opacity: 0.5;
+  opacity: 0;
   color: white;
+  z-index: 110;
+  text-align: center;
 }
-/* line 148, ../scss/gallery.scss */
-#lightbox .back-btn span {
+/* line 238, ../scss/gallery.scss */
+#lightbox .navi-btn span {
   position: absolute;
   top: 50%;
   left: 1em;
@@ -2511,17 +2600,25 @@ body {
   vertical-align: middle;
   display: inline-block;
 }
-/* line 158, ../scss/gallery.scss */
+/* line 247, ../scss/gallery.scss */
+#lightbox .navi-btn:hover {
+  opacity: 0.5;
+}
+/* line 253, ../scss/gallery.scss */
+#lightbox .navi-btn.next {
+  left: 50%;
+}
+/* line 257, ../scss/gallery.scss */
 #lightbox .tags {
   margin-top: 0.5em;
 }
-/* line 160, ../scss/gallery.scss */
+/* line 259, ../scss/gallery.scss */
 #lightbox .tags li {
   float: left;
   margin: 0.25em;
   font-size: 1.6em;
 }
-/* line 164, ../scss/gallery.scss */
+/* line 263, ../scss/gallery.scss */
 #lightbox .tags li a {
   border-radius: 5px;
   background: #2c3e50;
@@ -2530,7 +2627,36 @@ body {
   display: block;
   text-decoration: none;
 }
-/* line 171, ../scss/gallery.scss */
+/* line 270, ../scss/gallery.scss */
 #lightbox .tags li a:hover {
   background: #34495e;
+}
+
+@media only screen and (max-width: 768px) {
+  /* line 285, ../scss/gallery.scss */
+  #searchForm fieldset {
+    font-size: 2em;
+    padding: 0.5em;
+    margin: 0.5em;
+  }
+
+  /* line 293, ../scss/gallery.scss */
+  #photos .list {
+    padding-top: 0.5em;
+    padding-left: 0.7em;
+  }
+  /* line 296, ../scss/gallery.scss */
+  #photos .list li {
+    padding: 0 0.6em 0.6em 0;
+  }
+  /* line 299, ../scss/gallery.scss */
+  #photos .list img {
+    max-width: 150px;
+    max-height: 150px;
+  }
+
+  /* line 308, ../scss/gallery.scss */
+  #lightbox .navi-btn {
+    display: none;
+  }
 }

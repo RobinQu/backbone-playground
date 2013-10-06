@@ -24,6 +24,7 @@ body {
 
 * {
   box-sizing: border-box;
+  user-select: none;
 }
 
 .clearfix {
@@ -50,58 +51,107 @@ body {
 
 #searchForm {
   color: $CONCRETE;
+  background: white;
   
   fieldset {
     padding: 1em;
-    border-bottom: 1px solid $CONCRETE;
+    font-size: 3em;
+    background: $CLOUDS;
+    border-radius: 0.5em;
+    margin: 1em;
   }
   
   input {
-    width: 100%;
-    font-size: 3em;
     border: 0;
-    background: $CLOUDS;
-    border-radius: 10px;
-    padding: 0.5em 1em;
     outline: none;
+    font-size: 1em;
+    background: none;
+    margin:0;
+    width: 80%;
+    display: inline-block;
   }
-}
-
-#queries {
-  a {
-    padding: 1em 1em;
+  
+  .icon-btn {
     text-decoration: none;
-    color: $CONCRETE;
-    display: block;
-    border-bottom: 1px solid $CLOUDS;
-    &:hover, &:active {
-      color: white;
-      background: $ALIZARIN;
-      border-bottom: $POMEGRANATE;
+    display: inline-block;
+    color: $SILVER;
+    width: 15%;
+    text-align: center;
+    
+  }
+  
+  .home-btn {
+    display: none;
+    border-right: 1px solid $SILVER;
+  }
+  
+  .close-btn {
+    display: none;
+    float: right;
+    text-align: right;
+    i {
+      vertical-align: middle;
     }
   }
-  ul {
-    list-style: none;
-    font-size: 1.6em;
+  
+  &.in-session {
+    .home-btn {
+      display: inline-block;
+    }
+    input {
+      width: 66%;
+    }
   }
+  
+  .query-history {
+    display: none;
+    li {
+      padding: 0.25em 0.5em;
+      font-size: 0.8em;
+      &:first-child {
+        margin-top: 1em;
+      }
+      a {
+        text-decoration: none;
+        color: $CONCRETE;
+        &:hover {
+          color: $AMETHYST;
+        }
+      }
+    }
+  }
+  
+  &.expanded {
+    width: 100%;
+    
+    input {
+      color: $WET_ASPHALT;
+    }
+    .query-history {
+      display: block;
+    }
+  }
+  
 }
-
 
 #photos {
 
   .info {
     display: none;
     font-size: 2em;
+    padding: 1em 1.5em;
+    color: $SILVER;
   }
   
   .list {
     display: none;
     list-style: none;
-    padding: 0.5em;
+    padding: 0 0 3em 3em;
     
     li {
       float: left;
-      padding: 0.5em;
+      padding-right: 3em;
+      padding-bottom: 3em;
       img {
         width: 150px;
         height: 150px;
@@ -112,8 +162,52 @@ body {
   
   .navigation, .info {
     clear: both;
-    padding: 1em;
-    font-size: 1.6em;
+  }
+  
+  .navigation {
+    padding: 3em;
+    
+    .page-counter {
+      margin: 0.5em;
+      font-size: 2em;
+      color: $SILVER;
+      text-align: center;
+    }
+    
+    .navi {
+      border-radius: 0.5em;
+      background: $CLOUDS;
+      overflow: hidden;
+      li {
+        float: left;
+        width: 50%;
+        visibility: hidden;
+        &.active {
+          visibility: visible;
+        }
+      }
+      a {
+        
+        text-decoration: none;
+        padding: 0.5em 1em;
+        font-size: 2em;
+        color: $MIDNIGHT_BLUE;
+        display: block;
+        text-align: center;
+        &:hover {
+          background: $CONCRETE;
+          color: white;
+        }
+//        &.prev {
+//          border-right-top-radius: 0;
+//          border-right-bottom-radius: 0;
+//        }
+//        &.next {
+//          border-left-top-radius: 0;
+//          border-left-bottom-radius: 0;
+//        }
+      }
+    }
   }
   
 } 
@@ -123,28 +217,24 @@ body {
   .content {
     position: relative;
     text-align: center;
-    &:hover {
-      .back-btn {
-        display: block;
-      }
-    }
   }
   img {
     display: block;
     margin: 0 auto;
     max-width: 100%;
   }
-  .back-btn {
+  .navi-btn {
     text-decoration: none;
     position: absolute;
-    display: none;
     top: 0;
     left: 0;
     width: 50%;
     height: 100%;
     background: black;
-    opacity: 0.5;
+    opacity: 0;
     color: white;
+    z-index: 110;
+    text-align: center;
     span {
       position: absolute;
       top: 50%;
@@ -153,6 +243,15 @@ body {
       line-height: 100%;
       vertical-align: middle;
       display: inline-block;
+    }
+    &:hover {
+      opacity: 0.5;
+    }
+    &.prev {
+      
+    }
+    &.next {
+      left: 50%;
     }
   }
   .tags {
@@ -172,6 +271,43 @@ body {
           background: $WET_ASPHALT;
         }
       }
+    }
+  }
+  
+}
+
+
+@media only screen and (max-width: 768px) {
+  
+  
+  #searchForm {
+    
+    fieldset {
+      font-size: 2em;
+      padding: 0.5em;
+      margin: 0.5em;
+    }
+  }
+  
+  #photos {
+    .list {
+      padding-top: 0.5em;
+      padding-left: 0.7em;
+      li {
+        padding: 0 0.6em 0.6em 0;
+      }
+      img {
+        max-width: 150px;
+        max-height: 150px;
+      }
+    }
+    
+  }
+  
+  #lightbox {
+    .navi-btn {
+      display: none;
+//opacity: 0.5;
     }
   }
   

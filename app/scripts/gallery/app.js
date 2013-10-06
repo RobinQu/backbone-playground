@@ -1,4 +1,4 @@
-define(["backbone", "jquery", "underscore", "views/searchbar", "views/gallery", "views/lightbox", "views/query_list", "routes/router", "collections/queries"], function (Backbone, $, _, SearchbarView, GalleryView, LightboxView, QueryListView, Workspace, QueriesCollection) {
+define(["backbone", "jquery", "underscore", "views/outlet", "views/searchbar", "routes/router", "collections/queries"], function (Backbone, $, _, OutletView, SearchbarView, Workspace, QueriesCollection) {
 
   var app = _.extend({
     results: {}
@@ -7,11 +7,9 @@ define(["backbone", "jquery", "underscore", "views/searchbar", "views/gallery", 
     app.router = new Workspace();
     app.Queries = new QueriesCollection();
     
-    $(function () {
+    $(document).ready(function () {
+      app.outletView = new OutletView();
       app.searchbar = new SearchbarView();
-      app.gallery = new GalleryView();
-      app.lightbox = new LightboxView();
-      app.querylist = new QueryListView();
       console.log("views are preloaded");
       Backbone.history.start();
     });
