@@ -10,6 +10,9 @@ require.config({
   },
 
   shim: {
+    hammer: {
+      deps: ["jquery"]
+    },
     templates: {
       deps: ["handlebars", "utils/handlebars_helpers"]
     },

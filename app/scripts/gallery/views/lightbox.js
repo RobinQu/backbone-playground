@@ -10,6 +10,7 @@ define(["require", "backbone", "underscore", "jquery", "templates", "models/phot
       var app = require("app");
       // this.listenTo(app, "view", this.loadPhoto);
       // this.listenTo(this.model, "change", this.render);
+      require("hammer");
       this.listenTo(app, "search", this.hide);
       this.$info = this.$(".info");
       this.$el.hammer();

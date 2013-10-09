@@ -39,7 +39,7 @@ define(["require", "backbone", "views/query_list"], function (require, Backbone,
       this.focus();
     },
     
-    inputBlurred: function (e) {
+    inputBlurred: function () {
       // this.collapse();
     },
     
