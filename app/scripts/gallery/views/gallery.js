@@ -1,19 +1,19 @@
-define(["require", "backbone", "underscore", "jquery", "collections/photos", "views/pagination", "views/photo", "utils/flickr"], function (require, Backbone, _, $, PhotosCollection, PaginationView, PhotoView, flickr) {
+define(["require", "backbone", "underscore", "jquery", "collections/photos", "views/pagination", "views/photo", "utils/flickr", "app"], function (require, Backbone, _, $, PhotosCollection, PaginationView, PhotoView, flickr) {
   return Backbone.View.extend({
     
     el: "#photos",
 
     initialize: function () {
-      var app = require("app");
+      // var app = require("app");
       this.$info = this.$("div.info");
       this.$list = this.$("ul.list");
-      this.listenTo(app, "search", this.runQuery);
+      // this.listenTo(app, "search", this.runQuery);
       this.content = null;
       this.query = null;
       this.paginationView = new PaginationView();
     },
     
-    load: function() {
+    load: function () {
       this.runQuery.apply(this, arguments);
     },
     

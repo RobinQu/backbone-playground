@@ -11,14 +11,14 @@ define(["require", "backbone", "app"], function (require, Backbone) {
     
     home: function() {
       var app = require("app");
-      app.searchbar.focusInput();
+      app.searchbar.focus();
       document.title = "Gallery";
     },
     
     search: function (query, page) {
       var app = require("app");
-      app.trigger("search", query, page);
       app.outletView.loadView("gallery", query, page);
+      app.trigger("search", query, page);
       document.title = [query, "search", "Gallery"].join(" - ");
     },
     

@@ -1,4 +1,4 @@
-define(["require", "backbone", "app"], function(require, Backbone) {
+define(["require", "backbone", "app", "views/gallery", "views/lightbox"], function(require, Backbone) {
   
   var slice = Array.prototype.slice.call.bind(Array.prototype.slice);
   

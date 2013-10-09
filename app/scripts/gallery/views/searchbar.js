@@ -8,8 +8,8 @@ define(["require", "backbone", "views/query_list"], function (require, Backbone,
         
     events: {
       "submit": "createQuery",
-      "focus input": "focusInput",
-      "blur input": "collapse",
+      "focus input": "inputFocused",
+      "blur input": "inputBlurred",
       "keyup input": "keypressed",
       "click .close-btn": "clearInput",
       "click .home-btn": "endSession"
@@ -34,10 +34,27 @@ define(["require", "backbone", "views/query_list"], function (require, Backbone,
       }
     },
     
+    inputFocused: function (e) {
+      e.preventDefault();
+      this.focus();
+    },
+    
+    inputBlurred: function (e) {
+      // this.collapse();
+    },
+    
+    focus: function () {
+      this.expand();
+      this.$input[0].select();
+    },
+    
     clearInput: function() {
       this.$input.val("");
       this.$clear.hide();
-      this.collapse();
+      if(this.$el.hasClass("expanded")) {
+        this.collapse();
+      }
+      return false;
     },
     
     expand: function() {
@@ -48,10 +65,8 @@ define(["require", "backbone", "views/query_list"], function (require, Backbone,
     
     collapse: function() {
       var app = require("app");
-      setTimeout(function() {
-        this.$el.removeClass("expanded");
-        app.outletView.$el.show();
-      }.bind(this), 200);
+      this.$el.removeClass("expanded");
+      app.outletView.$el.show();
     },
     
     startSession: function() {
@@ -65,20 +80,7 @@ define(["require", "backbone", "views/query_list"], function (require, Backbone,
     endSession: function() {
       this.$el.removeClass("in-session");
     },
-    
-    focusInput: function (e) {
-      if(e) {
-        e.preventDefault();
-      }
-      var that = this;
-      that.expand();
-      setTimeout(function () {
-        that.$input.focus();
-        that.$input[0].select();
-      }, 0);
-      
-    },
-    
+        
     startSearch: function (q) {
       console.log("start search", q);
       this.$input.val(q);
