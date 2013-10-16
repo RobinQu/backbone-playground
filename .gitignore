@@ -6,4 +6,5 @@ tmp
 app/scripts/templates/*.js
 .sass-cache
 *.lock
-moments-server/data/
+momentd/data/
+.dpd

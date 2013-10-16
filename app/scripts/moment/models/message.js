@@ -3,11 +3,11 @@ define(["backbone", "models/user"], function (Backbone, User) {
     defaults: {
       content: "",
       ctime: 0,
-      authorId: 0
+      author: 0
     },
     
     getAuthor: function () {
-      return User.get(this.get("authorId"));
+      return User.get(this.get("author"));
     }
     
   });

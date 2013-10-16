@@ -1,0 +1,29 @@
+{
+	"type": "Collection",
+	"properties": {
+		"content": {
+			"name": "content",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "content",
+			"order": 0
+		},
+		"ctime": {
+			"name": "ctime",
+			"type": "number",
+			"typeLabel": "number",
+			"required": true,
+			"id": "ctime",
+			"order": 1
+		},
+		"author": {
+			"name": "author",
+			"type": "string",
+			"typeLabel": "string",
+			"required": true,
+			"id": "author",
+			"order": 2
+		}
+	}
+}

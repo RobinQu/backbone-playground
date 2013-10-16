@@ -26,7 +26,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "main";
+  return "Main!";
   });
 
 return this["tpls"];
