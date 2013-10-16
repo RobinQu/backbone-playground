@@ -123,7 +123,8 @@ module.exports = function (grunt) {
         files: {
           "app/scripts/todo/templates/todo.js": "app/handlebars/todo/{,*/}/*.hbs",
           "app/scripts/library/templates/library.js": "app/handlebars/library/{,*/}/*.hbs",
-          "app/scripts/gallery/templates/gallery.js": "app/handlebars/gallery/{,*/}/*.hbs"
+          "app/scripts/gallery/templates/gallery.js": "app/handlebars/gallery/{,*/}/*.hbs",
+          "app/scripts/moment/templates/moment.js": "app/handlebars/moment/{,*/}/*.hbs"
         }
       }
     }
@@ -131,6 +132,5 @@ module.exports = function (grunt) {
   });
   
   grunt.registerTask("default", ["clean", "compass:build", "jshint", "handlebars", "connect:liveload", "open", "watch"]);
-  
   
 };
