@@ -1,4 +1,4 @@
-define(["backbone", "views/header", "views/outlet", "views/footer", "marionette"], function (Backbone, Header, Outlet, Footer) {
+define(["backbone", "views/header_layout", "views/outlet_layout", "views/footer_layout", "marionette"], function (Backbone, Header, Outlet, Footer) {
   
   var app = new Backbone.Marionette.Application();
   

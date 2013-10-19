@@ -1,9 +1,9 @@
 define(["marionette", "templates"], function (Marionette, templates) {
+  
+  return Marionette.ItemView.extend({
+    
+    template: templates.heading
 
-  return Marionette.Layout.extend({
-    
-    template: templates.header
-    
   });
   
 });
